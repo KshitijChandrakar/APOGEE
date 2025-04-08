@@ -1,0 +1,26 @@
+HDU2: Index to summary data table
+
+Provides RA-indexed array giving index in HDU1 corresponding to each
+degree in RA, e.g., ARRAY[90] gives the index in HDU1 of first object
+with RA>90 degrees.
+
+This HDU has no non-standard required keywords.
+
+Data: FITS image
+
+
+HDU3: array definition
+
+Provides detailed information about the contents of the PARAM and ELEM
+arrays in HDU1 that is common to all data release stars.
+
+This HDU has no non-standard required keywords.
+
+Data: FITS image
+
+Required Data Table Columns Name	Type	Units	Description
+PARAM_SYMBOL	char[]		Gives order of parameters for PARAM and FPARAM arrays in HDU1
+ELEM_SYMBOL	char[]		Gives order of elements for X_H, X_M and FELEM arrays in HDU1
+ELEM_VALUE	char[]		Gives nature of values in FELEM arrays in HDU1, i.e. [X/H] or [X/M]
+ELEMTOH	int[]		Set to 1 for FELEM array element that is relative to H, 0 if relative to M (note caveat for C and N, which are relative to H in the dwarf grids)
+CLASSES	char[]		Gives order of classes in FPARAM_CLASS arrays in HDU1

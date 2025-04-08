@@ -1,0 +1,259 @@
+Required Data Table Columns Name	Type	Units	Description
+-------- IDs --------
+APSTAR_ID	char[45]		Unique apStar identifier: apogee.[ns].[sc].APSTAR_VERS.LOC.STAR, where [ns] is for APOGEE North/South, [sc] isfor survey/commissioning
+TARGET_ID	char[48]
+ASPCAP_ID	char[48]		Unique ASPCAP identifier: apogee.[ns].[sc].RESULTS_VERS.LOC.STAR FILE	char[34]		apStar file name
+APOGEE_ID	char[18]		TMASS-STYLE object name
+TELESCOPE	char[8]		String representation of of telescope used for observation (apo25m, lco25m, apo1m)
+LOCATION_ID	int16		Field Location ID
+FIELD	char[16]		Field name
+ALT_ID	char[18]		Alternate object name, if any
+
+-------- Target Info --------
+APOGEE_TARGET1	int32		Bitwise OR of first APOGEE-1 target flag of all visits, see bitmask definitions <http://www.sdss.org/dr17/irspec/apogee-bitmasks/#APOGEE_TARGET1>.
+APOGEE_TARGET2	int32		Bitwise OR of second APOGEE-1 target flag of all visits, see bitmask definitions <http://www.sdss.org/dr17/irspec/apogee-bitmasks/#APOGEE_TARGET
+APOGEE2_TARGET1	int32		Bitwise OR of first APOGEE-2 target flag of all visits, see bitmask definitions <http://www.sdss.org/dr17/irspec/apogee-bitmasks/#APOGEE_TARGET1>.
+APOGEE2_TARGET2	int32		Bitwise OR of second APOGEE-2 target flag of all visits, see bitmask definitions <http://www.sdss.org/dr17/irspec/apogee-bitmasks/#APOGEE_TARGET2>
+APOGEE2_TARGET3	int32		Bitwise OR of third APOGEE-2 target flag of all visits, see bitmask definitions <http://www.sdss.org/dr17/irspec/apogee-bitmasks/#APOGEE_TARGET>
+APOGEE2_TARGET4	int32		Bitwise OR of fourth APOGEE-2 target flag of all visits, see bitmask definitions <http://www.sdss.org/dr17/irspec/apogee-bitmasks/#APOGEE_TARGET4>
+TARGFLAGS	char[116]		Verbose/text form of APOGEE-1 target flags
+
+-------- Survery Name --------
+SURVEY	char[35]		Survey-associated with object: apogee, apo1m, apogee-marvels, apogee2, apogee2-manga, manga-apogee2
+PROGRAMNAME	char[18]		Program name associated with object, when available NINST	int32	Unused
+
+-------- Coordinates --------
+RA	float64	degrees 	Right ascension (J2000)
+DEC	float64	degrees 	Declination (J2000)
+GLON	float64	degrees 	Galactic longitude
+GLAT	float64	degrees 	Galactic latitude
+
+-------- GAIA Info --------
+GAIAEDR3_SOURCE_ID	int64		GAIA source ID from GAIA EDR3
+GAIAEDR3_PARALLAX	float64	mas 	GAIA parallax from GAIA EDR3
+GAIAEDR3_PMRA	float64	mas/yr 	GAIA proper motion in RA from GAIA EDR3
+GAIAEDR3_PARALLAX_ERROR	float64	mas 	GAIA parallax uncertainty GAIA EDR3
+GAIAEDR3_PMRA_ERROR	float64	mas/yr 	GAIA uncertainty in proper motion in RA from GAIA EDR3
+GAIAEDR3_PMDEC	float64	mas/yr 	GAIA proper motion in DEC from GAIA EDR3
+GAIAEDR3_PMDEC_ERROR	float64	mas/yr 	GAIA uncdertainty in proper motion in DEC from GAIA EDR3
+GAIAEDR3_PHOT_G_MEAN_MAG	float32		GAIA g mag from GAIA EDR3
+GAIAEDR3_PHOT_BP_MEAN_MAG	float32		GAIA Bp mag from GAIA EDR3
+GAIAEDR3_PHOT_RP_MEAN_MAG	float32		GAIA Rp mag from GAIA EDR3
+GAIAEDR3_RADIAL_VELOCITY	float64	km/s 	GAIA radial velocity from GAIA EDR3
+GAIAEDR3_RADIAL_VELOCITY_ERROR	float64	km/s 	GAIA uncertainty in radial velocity from GAIA EDR3
+GAIAEDR3_R_MED_GEO	float64	pc 	GAIA Bailer-Jones GEO distance estimate r_est from GAIA EDR3
+GAIAEDR3_R_HI_GEO	float64	pc 	GAIA Bailer-Jones 84th GEO percentile distance r_hi from GAIA EDR3
+GAIAEDR3_R_LO_GEO	float64	pc 	GAIA Bailer-Jones 16th GEO percentile distance r_lo from GAIA EDR3
+GAIAEDR3_R_MED_PHOTOGEO	float64	pc 	GAIA Bailer-Jones PHOTOGEO distance estimate r_est from GAIA EDR3
+GAIAEDR3_R_LO_PHOTOGEO	float64	pc 	GAIA Bailer-Jones 16th percentile PHOTOGEO distance r_lo from GAIA EDR3
+GAIAEDR3_R_HI_PHOTOGEO	float64	pc 	GAIA Bailer-Jones 84th percentile PHOTOGEO distance r_hi from GAIA EDR3
+
+
+-------- Star Condition --------
+STARFLAG	int32		Flag for star condition taken from bitwise OR of individual visits, see bitmask definitions <http://www.sdss.org/dr17/irspec/apogee-bitmasks/#APOGEE_STARFLAG>
+STARFLAGS	char[129]		Verbose/text form of STARFLAG
+ANDFLAG	int32		Flag for star condition taken from bitwise AND of individual visits, see bitmask definitions <http://www.sdss.org/dr17/irspec/apogee-bitmasks/#APOGEE_STARFLAG>
+ANDFLAGS	char[59]		Verbose/text form of ANDFLAG
+
+
+
+-------- Spectral Data --------
+J	float32		2MASS J mag [bad=99]
+J_ERR	float32		Uncertainty in 2MASS J mag
+H	float32		2MASS H mag [bad=99]
+H_ERR	float32		Uncertainty in 2MASS H mag
+K	float32		2MASS Ks mag [bad=99]
+K_ERR	float32		Uncertainty in 2MASS Ks mag
+SRC_H	char[12]		Source of H-Band photometry for targeting
+C_FE	float32	dex 	[C/Fe] from ASPCAP analysis of combined spectrum (from X_M)
+C_FE_ERR	float32	dex 	[C/Fe] uncertainty from ASPCAP analysis of combined spectrum (from X_M)
+CI_FE_FLAG	float32	dex 	[CI/Fe] flag
+CI_FE	float32	dex 	[CI/Fe] from ASPCAP analysis of combined spectrum (from X_M)
+CI_FE_ERR	float32	dex 	[CI/Fe] uncertainty from ASPCAP analysis of combined spectrum (from X_M)
+C_FE_FLAG	float32	dex 	[C/Fe] flag
+N_FE	float32	dex 	[N/Fe] from ASPCAP analysis of combined spectrum (from X_M)
+N_FE_ERR	float32	dex 	[N/Fe] uncertainty from ASPCAP analysis of combined spectrum (from X_M)
+N_FE_FLAG	float32	dex 	[N/Fe] flag
+O_FE	float32	dex 	[O/Fe] from ASPCAP analysis of combined spectrum (from X_M)
+O_FE_ERR	float32	dex 	[O/Fe] uncertainty from ASPCAP analysis of combined spectrum (from X_M)
+O_FE_FLAG	float32	dex 	[O/Fe] flag
+NA_FE	float32	dex 	[Na/Fe] from ASPCAP analysis of combined spectrum (from X_M)
+NA_FE_ERR	float32	dex 	[Na/Fe] uncertainty from ASPCAP analysis of combined spectrum (from X_M)
+NA_FE_FLAG	float32	dex 	[Na/Fe] flag
+MG_FE	float32	dex 	[Mg/Fe] from ASPCAP analysis of combined spectrum (from X_M)
+MG_FE_ERR	float32	dex 	[Mg/Fe] uncertainty from ASPCAP analysis of combined spectrum (from X_M)
+MG_FE_FLAG	float32	dex 	[Mg/Fe] flag
+AL_FE	float32	dex 	[Al/Fe] from ASPCAP analysis of combined spectrum (from X_M)
+AL_FE_ERR	float32	dex 	[Al/Fe] uncertainty from ASPCAP analysis of combined spectrum (from X_M)
+AL_FE_FLAG	float32	dex 	[Al/Fe] flag
+SI_FE	float32	dex 	[Si/Fe] from ASPCAP analysis of combined spectrum (from X_M)
+SI_FE_ERR	float32	dex 	[Si/Fe] uncertainty from ASPCAP analysis of combined spectrum (from X_M)
+SI_FE_FLAG	float32	dex 	[Si/Fe] flag
+P_FE	float32	dex 	[P/Fe] from ASPCAP analysis of combined spectrum (from X_M)
+P_FE_ERR	float32	dex 	[P/Fe] uncertainty from ASPCAP analysis of combined spectrum (from X_M)
+P_FE_FLAG	float32	dex 	[P/Fe] flag
+S_FE	float32	dex 	[S/Fe] from ASPCAP analysis of combined spectrum (from X_M)
+S_FE_ERR	float32	dex 	[S/Fe] uncertainty from ASPCAP analysis of combined spectrum (from X_M)
+S_FE_FLAG	float32	dex 	[S/Fe] flag
+K_FE	float32	dex 	[K/Fe] from ASPCAP analysis of combined spectrum (from X_M)
+K_FE_ERR	float32	dex 	[K/Fe] uncertainty from ASPCAP analysis of combined spectrum (from X_M)
+K_FE_FLAG	float32	dex 	[K/Fe] flag
+CA_FE	float32	dex 	[Ca/Fe] from ASPCAP analysis of combined spectrum (from X_M)
+CA_FE_ERR	float32	dex 	[Ca/Fe] uncertainty from ASPCAP analysis of combined spectrum (from X_M)
+CA_FE_FLAG	float32	dex 	[Ca/Fe] flag
+TI_FE	float32	dex 	[Ti/Fe] from ASPCAP analysis of combined spectrum (from X_M)
+TI_FE_ERR	float32	dex 	[Ti/Fe] uncertainty from ASPCAP analysis of combined spectrum (from X_M)
+TI_FE_FLAG	float32	dex 	[Ti/Fe] flag
+TIII_FE	float32	dex 	[TiII/Fe] from ASPCAP analysis of combined spectrum (from X_M)
+TIII_FE_ERR	float32	dex 	[TiII/Fe] uncertainty from ASPCAP analysis of combined spectrum (from X_M)
+TIII_FE_FLAG	float32	dex 	[TiII/Fe] flag
+V_FE	float32	dex 	[V/Fe] from ASPCAP analysis of combined spectrum (from X_M)
+V_FE_ERR	float32	dex 	[V/Fe] uncertainty from ASPCAP analysis of combined spectrum (from X_M)
+V_FE_FLAG	float32	dex 	[V/Fe] flag
+CR_FE	float32	dex 	[Cr/Fe] from ASPCAP analysis of combined spectrum (from X_M)
+CR_FE_ERR	float32	dex 	[Cr/Fe] uncertainty from ASPCAP analysis of combined spectrum (from X_M)
+CR_FE_FLAG	float32	dex 	[Cr/Fe] flag
+MN_FE	float32	dex 	[Mn/Fe] from ASPCAP analysis of combined spectrum (from X_M)
+MN_FE_ERR	float32	dex 	[Mn/Fe] uncertainty from ASPCAP analysis of combined spectrum (from X_M)
+MN_FE_FLAG	float32	dex 	[Mn/Fe] flag
+FE_H	float32	dex 	[Fe/H] from ASPCAP analysis of combined spectrum (from X_M)
+FE_H_ERR	float32	dex 	[Fe/H] uncertainty from ASPCAP analysis of combined spectrum (from X_M)
+FE_H_FLAG	float32	dex 	[Fe/H] flag
+CO_FE	float32	dex 	[Co/Fe] from ASPCAP analysis of combined spectrum (from X_M)
+CO_FE_ERR	float32	dex 	[Co/Fe] uncertainty from ASPCAP analysis of combined spectrum (from X_M)
+CO_FE_FLAG	float32	dex 	[Co/Fe] flag
+NI_FE	float32	dex 	[Ni/Fe] from ASPCAP analysis of combined spectrum (from X_M)
+NI_FE_ERR	float32	dex 	[Ni/Fe] uncertainty from ASPCAP analysis of combined spectrum (from X_M)
+NI_FE_FLAG	float32	dex 	[Ni/Fe] flag
+CU_FE	float32	dex 	[Cu/Fe] from ASPCAP analysis of combined spectrum (from X_M)
+CU_FE_ERR	float32	dex 	[Cu/Fe] uncertainty from ASPCAP analysis of combined spectrum (from X_M)
+CU_FE_FLAG	float32	dex 	[Cu/Fe] flag
+GE_FE	float32	dex 	[Ge/Fe] from ASPCAP analysis of combined spectrum (from X_M)
+GE_FE_ERR	float32	dex 	[Ge/Fe] uncertainty from ASPCAP analysis of combined spectrum (from X_M)
+GE_FE_FLAG	float32	dex 	[Ge/Fe] flag
+RB_FE	float32	dex 	[Rb/Fe] from ASPCAP analysis of combined spectrum (from X_M)
+RB_FE_ERR	float32	dex 	[Rb/Fe] uncertainty from ASPCAP analysis of combined spectrum (from X_M)
+RB_FE_FLAG	float32	dex 	[Rb/Fe] flag
+YB_FE	float32	dex 	[Y/Fe] from ASPCAP analysis of combined spectrum (from X_M)
+YB_FE_ERR	float32	dex 	[Y/Fe] uncertainty from ASPCAP analysis of combined spectrum (from X_M)
+YB_FE_FLAG	float32	dex 	[Y/Fe] flag
+ND_FE	float32	dex 	[Nd/Fe] from ASPCAP analysis of combined spectrum (from X_M)
+ND_FE_ERR	float32	dex 	[Nd/Fe] uncertainty from ASPCAP analysis of combined spectrum (from X_M)
+ND_FE_FLAG	float32	dex 	[Nd/Fe] flag
+
+
+-------- Spectrum Data --------
+ASPCAP_GRID	char[2]		ASPCAP grid of best-fitting spectrum
+FPARAM_GRID	float[9,23]		Raw FERRE parameters for each grid for which fit was performed (see GRIDS tag in HDU3 for grid names
+CHI2_GRID	float[9,23]		CHI2 for each grid for which fit was performed (see GRIDS tag in HDU3 for grid names
+FPARAM	float32[7]		Output parameter array from ASPCAP stellar parameters fit, in order given in PARAM_SYMBOL array in HDU3: Teff, logg, vmicro, [M/H], [C/M], [N/M], [alpha/M], vsini/vmacro
+FPARAM_COV	float32[49]		Covariance of fitted parameters from FERRE
+ASPCAP_CHI2	float32		Chi^2 from ASPCAP fit
+
+-------- Star Data --------
+PARAM	float32[7]		Empirically calibrated parameter array, using ASPCAP stellar parameters fit + calibrations, in order given in PARAM_SYMBOL array in HDU3: Teff, logg, vmicro, [M/H], [C/M], [N/M], [alpha/M], vsini/vmacro
+VMICRO	float32	(cgs) 	microturbulent velocity (fit for dwarfs, f(log g) for giants)
+VMACRO	float32	(cgs) 	macroturbulent velocity (f(log Teff, [M/H]) for giants)
+VHELIO_AVG	float32	km/s 	Average solar system barycentric radial velocity, weighted by S/N, using RVs determined from cross-correlation
+MIN_H			Bright H limit for target selection for this object
+MAX_H			Faint H limit for target selection for this object
+MIN_JK			Blue (J-K) limit for target selection for this object
+MAX_JK			Red (J-K) limit for target selection for this object
+PARAM_COV	float32[49]		Covariance of calibrated parameters, but with only diagonal elements from "external" uncertainty estimation
+PARAMFLAG	int32[7]		Individual parameter flag for ASPCAP analysis, see bitmask definitions <http://www.sdss.org/dr17/irspec/apogee-bitmasks/ #APOGEE_PARAMFLAG>
+TEFF	float32	K	Teff from ASPCAP analysis of combined spectrum (from PARAM)
+TEFF_ERR	float32	K	Teff uncertainty (from PARAM_COV)
+LOGG	float32	log (cgs) 	log g from ASPCAP analysis of combined spectrum (from PARAM)
+LOGG_ERR	float32	log (cgs) 	log g uncertainty (from PARAM_COV)
+VSINI	float32	(cgs) 	rotational+macroturbulent velocity (fit for dwarfs)
+TEFF_SPEC	float32	K 	ASPCAP spectroscopic Teff (duplicated from FPARAM[0] for convenience)
+LOGG_SPEC	float32	log (cgs) 	ASPCAP spectroscopic surface gravity (duplicated from FPARAM[1] for convenience)
+
+WASH_M	float32		Washington M mag
+WASH_M_ERR	float32		Washington M mag error
+WASH_T2	float32		Washington T2 mag
+WASH_T2_ERR	float32		Washington T2 mag error
+DDO51	float32		DDO 51 mag
+DDO51_ERR	float32		DDO 51 mag error
+
+IRAC_3_6	float32		IRAC 3.6micron mag
+IRAC_3_6_ERR	float32		IRAC 3.6micron mag error
+IRAC_4_5	float32		IRAC 4.5micron mag
+IRAC_4_5_ERR	float32		IRAC 4.5micron mag error
+IRAC_5_8	float32		IRAC 5.8 micron mag
+IRAC_5_8_ERR	float32		IRAC 5.8 micron mag error
+IRAC_8_0	float32		IRAC 8.0 micron mag
+IRAC_8_0_ERR	float32		IRAC 8.0 micron mag error
+
+WISE_4_5	float32		WISE 4.5 micron mag
+WISE_4_5_ERR	float32		WISE 4.5 micron mag error
+
+TARG_4_5	float32		4.5 micron mag adopted for dereddening for targeting
+TARG_4_5_ERR	float32		4.5 micron mag adopted for dereddening for targeting, error
+
+WASH_DDO51_GIANT_FLAG	int16		Flagged as a giant for targeting purposes based on Washington/DDO 51 photometry
+WASH_DDO51_STAR_FLAG	int16		Flagged as a starfor targeting purposes based on Washington/DDO 51 photometry
+
+
+TARG_PMRA	float32		RA proper motion used for targeting
+TARG_PMDEC	float32		DEC proper motion used for targeting
+TARG_PMSRC	float32		Source of proper motion used for targeting
+AK_TARG	float32		K-band extinction adopted for targetting
+AK_TARG_METHOD	char[17]		Method used to get targetting extinction
+AK_WISE	float32		WISE all-sky K-band extinction
+SFD_EBV	float32		SFD reddening
+
+
+NVISITS	int32		Number of visits into combined spectrum
+COMBTYPE	int32		Gives type of RV combination used
+COMMISS	int16		Set to 1 for APOGEE-1 Commissioning data (before July 2011), else 0
+SNR	float32		S/N estimate
+SNREV	float32		Revised S/N estimate (avoiding persistence issues)
+ALL_VISITS	char[737]		List of ALL visits, including ones judged as bad
+
+of individual spectra with combined spectrum
+VSCATTER	float32	km/s 	Scatter of individual visit RVs around average
+VERR	float32	km/s	Uncertainty in VHELIO_AVG from the S/N-weighted individual RVs
+VERR_MED	float32	km/s 	Median of individual visit RV errors
+RV_TEFF	float32	K	Teff of best-fit synthetic spectrum from RV fit (NOT ASPCAP!)
+RV_LOGG	float32	log (cgs) 	log g of best-fit synthetic spectrum from RV fit (NOT ASPCAP!)
+RV_FEH	float32		[Fe/H] of best-fit synthetic spectrum from RV fit (NOT ASPCAP!)
+RV_ALPHA	float32		[alpha/M] of best-fit synthetic spectrum from RV fit (NOT ASPCAP!)
+RV_CARB	float32		[C/M] of best-fit synthetic spectrum from RV fit (NOT ASPCAP!)
+RV_CCFWHM	float32	km/s 	FWHM of cross-correlation peak from combined vs best-match synthetic spectrum
+RV_AUTOFWHM	float32	km/s 	FWHM of auto-correlation of best-match synthetic spectrum
+RV_FLAG	int64		bitmask for RV determination
+N_COMPONENTS	int64		Number of components identified from RV cross-correlations
+MEANFIB	float32		Mean fiber number of the set of observations
+SIGFIB	float32		Dispersion in fiber number
+
+
+
+
+ASPCAPFLAG	int32		Flag for ASPCAP analysis, see bitmask definitions <http://www.sdss.org/dr17/irspec/apogee-bitmasks/#APOGEE_ASPCAPFLAG>
+ASPCAPFLAGS	char[114]		Verbose/text form ASPCAPFLAG
+FRAC_BADPIX	float32		Fraction of bad pixels in spectrum
+FRAC_LOWSNR	float32		Fraction of low S/N pixels in spectrum
+FRAC_SIGSKY	float32		Fraction of SIG_SKYLINE pixels in spectrum
+FELEM	float32[26]		Output individual element array from ASPCAP stellar abundances fit, in order given in ELEM_SYMBOL array in HDU3
+FELEM_ERR	float32[26]		Uncertainty from FERRE in individual element abundances
+X_H	float32[26]		Empirically calibrated individual element array, using ASPCAP stellar abundances fit + calibrations, all expressed inlogarithmic abundance relative to H ([X/H]), in order given in ELEM_SYMBOL array in HDU3
+X_H_ERR	float32[26]		Empirical uncertainties in [X/H], derived from repeat observations of stars
+X_M	float32[26]		Empirically calibrated individual element array, using ASPCAP stellar abundances fit + calibrations, all expressed in logarithmic abundance relative to M ([X/M]) in order given in ELEM_SYMBOL array in HDU3
+X_M_ERR	float32[26]		Empirical uncertainties in [X/M], derived from repeat observations of stars
+ELEM_CHI2	float32[26]		Chi^2 from ASPCAP fit of individual abundances
+ELEMFLAG	int32[26]		Flags for analysis of individual abundances, see bitmask definitions <http://www.sdss.org/dr17/irspec/apogee-bitmasks/ #APOGEE_STARFLAG>
+EXTRATARG	int32		Bitmask which identifies main survey targets and other classes, see bitmask definitions <http://www.sdss.org/dr17/irspec/ apogee-bitmasks/#EXTRATARG>.
+
+
+M_H	float32	dex 	[Z/H] from ASPCAP analysis of combined spectrum (from PARAM)
+M_H_ERR	float32	dex	[Z/H] uncertainty (from PARAM_COV)
+ALPHA_M	float32	dex 	[alpha/M] from ASPCAP analysis of combined spectrum (from PARAM)
+ALPHA_M_ERR	float32	dex	[alpha/M] uncertainty (from PARAM_COV)
+
+VISITS	char[665]		List of visits going into combined spectrum
+ALL_VISIT_PK	int32[50]		Index of visits (all visits, including ones judged as bad) in allVisit file
+VISIT_PK	int32[50]		Index of visits (used in combined spectrum) in allVisit file
+APSTAR_VERSION	char[5]		APSTAR release version
+ASPCAP_VERSION	char[10]		ASPCAP release version
+RESULTS_VERSION	char[8]		RESULTS release version
