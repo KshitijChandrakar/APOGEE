@@ -6,7 +6,8 @@
 **Alternative Objective:**
 **Alternative Objective:** What Stars were probably formed by the Gaia_Aneladus and the other Merger
 
-**Final Objective:** - Galactic Area where Star Formation
+**Final Objective:** Identify Halo Members
+- Galactic Area where Star Formation
 - Star Type Classification
 - Age vs Gravity
 
