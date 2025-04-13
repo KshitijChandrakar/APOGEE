@@ -50,7 +50,7 @@ GAIAEDR3_R_HI_PHOTOGEO	float64	pc 	GAIA Bailer-Jones 84th percentile PHOTOGEO di
 
 
 -------- Star Condition --------
-STARFLAG	int32		Flag for star condition taken from bitwise OR of individual visits, see bitmask definitions <http://www.sdss.org/dr17/irspec/apogee-bitmasks/#APOGEE_STARFLAG>
+STARFLAG	int32		Flag for star condition taken from bitwise OR of individual visits, see bitmask definitions <http://www.sdss.org/dr17/irspec/apogee-bitmasks#APOGEE_STARFLAG>
 STARFLAGS	char[129]		Verbose/text form of STARFLAG
 ANDFLAG	int32		Flag for star condition taken from bitwise AND of individual visits, see bitmask definitions <http://www.sdss.org/dr17/irspec/apogee-bitmasks/#APOGEE_STARFLAG>
 ANDFLAGS	char[59]		Verbose/text form of ANDFLAG
@@ -242,8 +242,8 @@ X_H_ERR	float32[26]		Empirical uncertainties in [X/H], derived from repeat obser
 X_M	float32[26]		Empirically calibrated individual element array, using ASPCAP stellar abundances fit + calibrations, all expressed in logarithmic abundance relative to M ([X/M]) in order given in ELEM_SYMBOL array in HDU3
 X_M_ERR	float32[26]		Empirical uncertainties in [X/M], derived from repeat observations of stars
 ELEM_CHI2	float32[26]		Chi^2 from ASPCAP fit of individual abundances
-ELEMFLAG	int32[26]		Flags for analysis of individual abundances, see bitmask definitions <http://www.sdss.org/dr17/irspec/apogee-bitmasks/ #APOGEE_STARFLAG>
-EXTRATARG	int32		Bitmask which identifies main survey targets and other classes, see bitmask definitions <http://www.sdss.org/dr17/irspec/ apogee-bitmasks/#EXTRATARG>.
+ELEMFLAG	int32[26]		Flags for analysis of individual abundances, see bitmask definitions <http://www.sdss.org/dr17/irspec/apogee-bitmasks/#APOGEE_STARFLAG>
+EXTRATARG	int32		Bitmask which identifies main survey targets and other classes, see bitmask definitions <http://www.sdss.org/dr17/irspec/apogee-bitmasks/#EXTRATARG>.
 
 
 M_H	float32	dex 	[Z/H] from ASPCAP analysis of combined spectrum (from PARAM)

@@ -25,8 +25,6 @@ StarHorsefile = "APOGEE_DR17_EDR3_STARHORSE_v2.fits"
 APOGEEfile = "allStar-dr17-synspec_rev1.fits"
 SHdatapath = path + StarHorsefile
 APOGEEdatapath = path + APOGEEfile
-
-# %%
 SH_hdul = fits.open(SHdatapath)[1]
 APOGEE_hdul = fits.open(APOGEEdatapath)[1]
 
@@ -40,98 +38,62 @@ def makedf(data, cols, N):
     return df
 
 
+# %% Numerical Columns
+cols = ['J', 'H', 'K', 'SNREV', 'VHELIO_AVG', 'VSCATTER', 'RV_TEFF', 'RV_LOGG', 'RV_FEH', 'RV_ALPHA', 'RV_CARB', 'RV_CHI2', 'RV_CCFWHM', 'RV_AUTOFWHM', 'MEANFIB', 'SIGFIB', 'MIN_H', 'MAX_H', 'MIN_JK', 'MAX_JK', 'GAIAEDR3_PARALLAX', 'GAIAEDR3_PMRA', 'GAIAEDR3_PMDEC', 'GAIAEDR3_PHOT_G_MEAN_MAG', 'GAIAEDR3_PHOT_BP_MEAN_MAG', 'GAIAEDR3_PHOT_RP_MEAN_MAG', 'GAIAEDR3_DR2_RADIAL_VELOCITY', 'GAIAEDR3_R_MED_GEO', 'GAIAEDR3_R_LO_GEO', 'GAIAEDR3_R_HI_GEO', 'GAIAEDR3_R_MED_PHOTOGEO', 'GAIAEDR3_R_LO_PHOTOGEO', 'GAIAEDR3_R_HI_PHOTOGEO', 'ASPCAP_CHI2', 'FRAC_BADPIX', 'FRAC_LOWSNR', 'FRAC_SIGSKY', 'TEFF', 'LOGG', 'M_H', 'ALPHA_M', 'VMICRO', 'VMACRO', 'VSINI', 'C_FE', 'CI_FE', 'N_FE', 'O_FE', 'NA_FE', 'MG_FE', 'AL_FE', 'SI_FE', 'P_FE', 'S_FE', 'K_FE', 'CA_FE', 'TI_FE', 'TIII_FE', 'V_FE', 'CR_FE', 'MN_FE', 'FE_H', 'CO_FE', 'NI_FE', 'CU_FE', 'CE_FE', 'YB_FE', 'RA', 'DEC', 'GLON', 'GLAT']
 # %%
-# cols = ["APOGEE_ID", "GLON", "GLAT", "RA", "DEC"]
-# SH = pd.DataFrame(SH_hdul.data)
-
-# %%
-# cols = ["APOGEE_ID", "FE_H", "LOGG", "TEFF", "GLON", "GLAT", "RA", "DEC"]
-# APOGEE = makedf(APOGEE_hdul, Text_Params, 10)
+df = makedf(APOGEE_hdul, cols, 100000)
 
 # %%
-# APOGEE[Text_Params[1]]
-
-# %% markdown
-# ----------------------------------------------------------------------------
-
-# %% code
-GroupByParameter = "M_H"
-Text_Params = ["APOGEE_ID", "ALT_ID", "LOGG", "FE_H", "VMICRO", "VMACRO","VHELIO_AVG", "TEFF"]
-X_Param, Y_Param, Z_Param = "GLAT", "GLON", "GAIAEDR3_DR2_RADIAL_VELOCITY"
-N = 100000
-title = (
-    X_Param + " vs " + Y_Param + " vs " + Z_Param + " - " + GroupByParameter
-    if Z_Param != None
-    else X_Param + " vs " + Y_Param + " - " + GroupByParameter
-)
-data = APOGEE_hdul.data
-
-# %% markdown
+for col in df.columns:
+    if df[col].dtype.kind in ['f', 'i']:  # float or integer
+        df[col] = df[col].astype('float64')  # or 'int64'
+# %%
+df.dropna(axis=1,  thresh=5)
+# %%
+corr_matrix = df.corr()
+plot = sns.heatmap(corr_matrix, annot=False)
+plt.savefig(path + "CorrelationMatrixBetweenNumerical1.png",bbox_inches="tight")
 
 # %%
-print("Starting plot")
+corr_matrix
 # %%
-def Plot2D():
-    im = plt.scatter(
-        x=data[X_Param][:N],
-        y=data[Y_Param][:N],
-        c=data[GroupByParameter][:N],
-        marker=".",
-        s=1,
-        zorder=1,
-        cmap="jet",
-        vmin=-1,
-        vmax=0.5,
-    )
-    plt.colorbar(im, location="bottom", label=GroupByParameter)
+threshold = 0.9
 
-    plt.xlabel(X_Param)
-    plt.ylabel(Y_Param)
-    plt.title(title)
-    plt.savefig(path + title)
-# %%
-def Plot3D():
-    textdf = makedf(APOGEE_hdul, Text_Params, N)
-    fig = go.Figure(
-        data=go.Scatter3d(
-            x=data[X_Param][:N],
-            y=data[Y_Param][:N],
-            z=data[Z_Param][:N],
-            customdata=textdf,
-            mode="markers",
-            hovertemplate=(
-                str.join("",[Text_Params[i] + ": %{customdata[" + str(i) +"]}<br>" for i in range(len(Text_Params))]) +
-                X_Param + ": %{x}<br>" +
-                Y_Param + ": %{y}<br>" +
-                Z_Param + ": %{z}<br>" +
-                GroupByParameter + ": %{marker.color}<br>" +
-                "<extra></extra>"
-            ),
-            marker=dict(
-                size=3,
-                opacity=0.3,
-                color=data[GroupByParameter][:N],
-                colorscale="Viridis",
-                colorbar=dict(title=GroupByParameter),
-                showscale=True,
-            ),
-        )
-    )
-    fig.update_layout(
-        title=title,
-        scene=dict(xaxis_title=X_Param, yaxis_title=Y_Param, zaxis_title=Z_Param),
-        width=800,
-        height=600,
-    )
-
-    fig.write_html(path + title + ".html")  # Basic save
+upper = corr_matrix.where(np.triu(np.ones(corr_matrix.shape), k=1).astype(bool))
 
 # %%
+
+to_drop = [column for column in corr_matrix.columns if any(upper[column] > threshold)]
+df.drop(columns=to_drop)
+
+# %%
+
+'''
+Data Columns with dropped columns over 0.9 Correlation
+['J', 'H', 'K', 'SNREV', 'VHELIO_AVG', 'VSCATTER', 'RV_TEFF', 'RV_LOGG',
+'RV_FEH', 'RV_ALPHA', 'RV_CARB', 'RV_CHI2', 'RV_CCFWHM', 'RV_AUTOFWHM',
+'MEANFIB', 'SIGFIB', 'MIN_H', 'MAX_H', 'MIN_JK', 'MAX_JK',
+'GAIAEDR3_PARALLAX', 'GAIAEDR3_PMRA', 'GAIAEDR3_PMDEC',
+'GAIAEDR3_PHOT_G_MEAN_MAG', 'GAIAEDR3_PHOT_BP_MEAN_MAG',
+'GAIAEDR3_PHOT_RP_MEAN_MAG', 'GAIAEDR3_DR2_RADIAL_VELOCITY',
+'GAIAEDR3_R_MED_GEO', 'GAIAEDR3_R_LO_GEO', 'GAIAEDR3_R_HI_GEO',
+'GAIAEDR3_R_MED_PHOTOGEO', 'GAIAEDR3_R_LO_PHOTOGEO',
+'GAIAEDR3_R_HI_PHOTOGEO', 'ASPCAP_CHI2', 'FRAC_BADPIX', 'FRAC_LOWSNR',
+'FRAC_SIGSKY', 'TEFF', 'LOGG', 'M_H', 'ALPHA_M', 'VMICRO', 'VMACRO',
+'VSINI', 'C_FE', 'CI_FE', 'N_FE', 'O_FE', 'NA_FE', 'MG_FE', 'AL_FE',
+'SI_FE', 'P_FE', 'S_FE', 'K_FE', 'CA_FE', 'TI_FE', 'TIII_FE', 'V_FE',
+'CR_FE', 'MN_FE', 'FE_H', 'CO_FE', 'NI_FE', 'CU_FE', 'CE_FE', 'YB_FE',
+'RA', 'DEC', 'GLON', 'GLAT']
+'''
+# %%
+
 try:
     if Z_Param == None:
-        Plot2D()
+        pass
+        # Plot2D()
     else:
-        Plot3D()
+        pass
+        # Plot3D()
 except KeyboardInterrupt:
     print("hie")
     exit(1)
