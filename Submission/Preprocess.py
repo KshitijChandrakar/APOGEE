@@ -1,0 +1,25 @@
+
+# %%
+colum = [('FILE', '64A'),('APOGEE_ID', '30A'),('TARGET_ID', '58A'),('APSTAR_ID', '71A'),('ASPCAP_ID', '77A'),('TELESCOPE', '6A'),('LOCATION_ID', 'J'),('FIELD', '20A'),('ALT_ID', '30A'),('RA', 'D'),('DEC', 'D'),('GLON', 'D'),('GLAT', 'D'),('J', 'E'),('J_ERR', 'E'),('H', 'E'),('H_ERR', 'E'),('K', 'E'),('K_ERR', 'E'),('SRC_H', '16A'),('WASH_M', 'E'),('WASH_M_ERR', 'E'),('WASH_T2', 'E'),('WASH_T2_ERR', 'E'),('DDO51', 'E'),('DDO51_ERR', 'E'),('IRAC_3_6', 'E'),('IRAC_3_6_ERR', 'E'),('IRAC_4_5', 'E'),('IRAC_4_5_ERR', 'E'),('IRAC_5_8', 'E'),('IRAC_5_8_ERR', 'E'),('IRAC_8_0', 'E'),('IRAC_8_0_ERR', 'E'),('WISE_4_5', 'E'),('WISE_4_5_ERR', 'E'),('TARG_4_5', 'E'),('TARG_4_5_ERR', 'E'),('WASH_DDO51_GIANT_FLAG', 'J'),('WASH_DDO51_STAR_FLAG', 'J'),('TARG_PMRA', 'E'),('TARG_PMDEC', 'E'),('TARG_PM_SRC', '16A'),('AK_TARG', 'E'),('AK_TARG_METHOD', '32A'),('AK_WISE', 'E'),('SFD_EBV', 'E'),('APOGEE_TARGET1', 'J'),('APOGEE_TARGET2', 'J'),('APOGEE2_TARGET1', 'J'),('APOGEE2_TARGET2', 'J'),('APOGEE2_TARGET3', 'J'),('APOGEE2_TARGET4', 'J'),('TARGFLAGS', '132A'),('SURVEY', '32A'),('PROGRAM(', '32A'),('NVISITS', 'J'),('SNR', 'E'),('SNREV', 'E'),('STARFLAG', 'K'),('STARFLAGS', '132A'),('ANDFLAG', 'K'),('ANDFLAGS', '132A'),('VHELIO_AVG', 'E'),('VSCATTER', 'E'),('VERR', 'E'),('RV_TEFF', 'E'),('RV_LOGG', 'E'),('RV_FEH', 'E'),('RV_ALPHA', 'E'),('RV_CARB', 'E'),('RV_CHI2', 'E'),('RV_CCFWHM', 'E'),('RV_AUTOFWHM', 'E'),('RV_FLAG', 'J'),('N_COMPONENTS', 'J'),('MEANFIB', 'E'),('SIGFIB', 'E'),('MIN_H', 'E'),('MAX_H', 'E'),('MIN_JK', 'E'),('MAX_JK', 'E'),('GAIAEDR3_SOURCE_ID', 'K'),('GAIAEDR3_PARALLAX', 'E'),('GAIAEDR3_PARALLAX_ERROR', 'E'),('GAIAEDR3_PMRA', 'E'),('GAIAEDR3_PMRA_ERROR', 'E'),('GAIAEDR3_PMDEC', 'E'),('GAIAEDR3_PMDEC_ERROR', 'E'),('GAIAEDR3_PHOT_G_MEAN_MAG', 'E'),('GAIAEDR3_PHOT_BP_MEAN_MAG', 'E'),('GAIAEDR3_PHOT_RP_MEAN_MAG', 'E'),('GAIAEDR3_DR2_RADIAL_VELOCITY', 'E'),('GAIAEDR3_DR2_RADIAL_VELOCITY_ERROR', 'E'),('GAIAEDR3_R_MED_GEO', 'E'),('GAIAEDR3_R_LO_GEO', 'E'),('GAIAEDR3_R_HI_GEO', 'E'),('GAIAEDR3_R_MED_PHOTOGEO', 'E'),('GAIAEDR3_R_LO_PHOTOGEO', 'E'),('GAIAEDR3_R_HI_PHOTOGEO', 'E'),('ASPCAP_GRID', '8A'),('FPARAM_GRID', '189E', 'dim(9,21)'),('CHI2_GRID', '21E', 'dim(21)'),('FPARAM', '9E', 'dim(9)'),('FPARAM_COV', '81E', 'dim(9,9)'),('ASPCAP_CHI2', 'E'),('PARAM', '9E', 'dim(9)'),('PARAM_COV', '81E', 'dim(9,9)'),('PARAMFLAG', '9K', 'dim(9)'),('ASPCAPFLAG', 'K'),('ASPCAPFLAGS', '256A'),('FRAC_BADPIX', 'E'),('FRAC_LOWSNR', 'E'),('FRAC_SIGSKY', 'E'),('FELEM', '27E', 'dim(27)'),('FELEM_ERR', '27D', 'dim(27)'),('X_H', '27E', 'dim(27)'),('X_H_ERR', '27E', 'dim(27)'),('X_M', '27E', 'dim(27)'),('X_M_ERR', '27E', 'dim(27)'),('ELEM_CHI2', '27E', 'dim(27)'),('ELEMFRAC', '27E', 'dim(27)'),('ELEMFLAG', '27K', 'dim(27)'),('EXTRATARG', 'J'),('MEMBERFLAG', 'K'),('MEMBER', '10A'),('X_H_SPEC', '27E', 'dim(27)'),('X_M_SPEC', '27E', 'dim(27)'),('TEFF', 'E'),('TEFF_ERR', 'E'),('LOGG', 'E'),('LOGG_ERR', 'E'),('M_H', 'E'),('M_H_ERR', 'E'),('ALPHA_M', 'E'),('ALPHA_M_ERR', 'E'),('VMICRO', 'E'),('VMACRO', 'E'),('VSINI', 'E'),('TEFF_SPEC', 'E'),('LOGG_SPEC', 'E'),('C_FE', 'E'),('C_FE_SPEC', 'E'),('C_FE_ERR', 'E'),('C_FE_FLAG', 'J'),('CI_FE', 'E'),('CI_FE_SPEC', 'E'),('CI_FE_ERR', 'E'),('CI_FE_FLAG', 'J'),('N_FE', 'E'),('N_FE_SPEC', 'E'),('N_FE_ERR', 'E'),('N_FE_FLAG', 'J'),('O_FE', 'E'),('O_FE_SPEC', 'E'),('O_FE_ERR', 'E'),('O_FE_FLAG', 'J'),('NA_FE', 'E'),('NA_FE_SPEC', 'E'),('NA_FE_ERR', 'E'),('NA_FE_FLAG', 'J'),('MG_FE', 'E'),('MG_FE_SPEC', 'E'),('MG_FE_ERR', 'E'),('MG_FE_FLAG', 'J'),('AL_FE', 'E'),('AL_FE_SPEC', 'E'),('AL_FE_ERR', 'E'),('AL_FE_FLAG', 'J'),('SI_FE', 'E'),('SI_FE_SPEC', 'E'),('SI_FE_ERR', 'E'),('SI_FE_FLAG', 'J'),('P_FE', 'E'),('P_FE_SPEC', 'E'),('P_FE_ERR', 'E'),('P_FE_FLAG', 'J'),('S_FE', 'E'),('S_FE_SPEC', 'E'),('S_FE_ERR', 'E'),('S_FE_FLAG', 'J'),('K_FE', 'E'),('K_FE_SPEC', 'E'),('K_FE_ERR', 'E'),('K_FE_FLAG', 'J'),('CA_FE', 'E'),('CA_FE_SPEC', 'E'),('CA_FE_ERR', 'E'),('CA_FE_FLAG', 'J'),('TI_FE', 'E'),('TI_FE_SPEC', 'E'),('TI_FE_ERR', 'E'),('TI_FE_FLAG', 'J'),('TIII_FE', 'E'),('TIII_FE_SPEC', 'E'),('TIII_FE_ERR', 'E'),('TIII_FE_FLAG', 'J'),('V_FE', 'E'),('V_FE_SPEC', 'E'),('V_FE_ERR', 'E'),('V_FE_FLAG', 'J'),('CR_FE', 'E'),('CR_FE_SPEC', 'E'),('CR_FE_ERR', 'E'),('CR_FE_FLAG', 'J'),('MN_FE', 'E'),('MN_FE_SPEC', 'E'),('MN_FE_ERR', 'E'),('MN_FE_FLAG', 'J'),('FE_H', 'E'),('FE_H_SPEC', 'E'),('FE_H_ERR', 'E'),('FE_H_FLAG', 'J'),('CO_FE', 'E'),('CO_FE_SPEC', 'E'),('CO_FE_ERR', 'E'),('CO_FE_FLAG', 'J'),('NI_FE', 'E'),('NI_FE_SPEC', 'E'),('NI_FE_ERR', 'E'),('NI_FE_FLAG', 'J'),('CU_FE', 'E'),('CU_FE_SPEC', 'E'),('CU_FE_ERR', 'E'),('CU_FE_FLAG', 'J'),('CE_FE', 'E'),('CE_FE_SPEC', 'E'),('CE_FE_ERR', 'E'),('CE_FE_FLAG', 'J'),('YB_FE', 'E'),('YB_FE_SPEC', 'E'),('YB_FE_ERR', 'E'),('YB_FE_FLAG', 'J'),('VISIT_PK', '100J')]
+
+
+# %%
+cols = pd.DataFrame(colum)
+
+# %%
+cols.columns = ["name", "format", "shape"]
+
+# %%
+cols2 = cols[cols["shape"].isna()][cols["format"] == "D"]["name" ].tolist()
+# %%
+cols1 + cols2
+
+# %%
+temp = []
+for i in cols1 + cols2:
+    if not ("ERR" in i or "SPEC" in i):
+        temp.append(i)
+cols3 = temp
+
+# %%
+str(cols3)

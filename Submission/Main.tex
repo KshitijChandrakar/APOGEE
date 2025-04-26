@@ -2,17 +2,38 @@
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{float}
+\usepackage{longtable}
+\usepackage{pgfplotstable}
+\usepackage{booktabs} % For better looking tables
+\usepackage[utf8]{inputenc}  % Add to preamble
+
 \begin{document}
+\include{titlepage}
 
 \section{Dataset Information}\label{dataset-information}
 
-\textbf{Dataset Chosen:}
+\paragraph{Dataset Chosen:}
  APOGEE2 from SDSS\\
-\textbf{Objective:}
-Identifying Young Stars and Differentiating them from Red Giants?\\
+\url{https://www.sdss4.org/dr17/irspec/spectro_data}
+\paragraph{Objective:}
+Identifying Stars from the Halo of Our Galaxy Based on Various Stellar Parameters\\
+\paragraph{Description and Selection Process}
+We choose the dataset as it has good support with multiple Value Added Catalogs, Was released  relatively recently so it would have more accurate Information, it is Well Documented and has Features which would help our Objective.\\
+It is a part of The Sloan Digital Sky Survey. They have created the most detailed three-dimensional maps of the Universe ever made, with deep multi-color images of one third of the sky, and spectra for more than three million astronomical objects.
+\paragraph{Hypothesis}
+From the current theory, we can Hypothesise that the Halo stars would have the following properties.
+\begin{itemize}
+  \item Spatial Distribution with an angled Galactic Latitude
+  \item Metal Poor \([Fe/H] < −1\)
+  \item Highly Turbulent Motion
+  \item Highly eccentric and inclined orbits
+  \item alpha-element enhancement (O, Mg, Si)
+
+\end{itemize}
 % =========================================
 % =========================================
 % =========================================
+\newpage
 \section{Exploratory Data Analysis} On doing EDA we find various trends, the
 following are the Observations.\\
 % =========================================
@@ -70,9 +91,15 @@ In the above \hyperref[fig:3]{Scatterplot} we can Identify the various regions w
 \paragraph{}
 The Deep-Blue Signifies a Low Metallicity which means that the particular star is Young.
 % =========================================
+\newpage
 \section{Feature Selection}\label{feature-selection}
 
-Techniques Applied: - Correlation Matrix
+Techniques Applied:
+\begin{itemize}
+  \item Correlation Matrix
+  \item Random Forest Selection
+  \item Lasso Regression
+\end{itemize}
 
 % =========================================
 \subsection{Correlation Matrix}
@@ -88,24 +115,48 @@ We create the Covariance Matrix Heatmap and Remove Highly Correlated Features wi
 
 After Dropping we get the following columns left:
 \paragraph{}
-{[}`J', `H', `K',
-`SNREV', `VHELIO\_AVG', `VSCATTER', `RV\_TEFF', `RV\_LOGG', `RV\_FEH',
-`RV\_ALPHA', `RV\_CARB', `RV\_CHI2', `RV\_CCFWHM', `RV\_AUTOFWHM',
-`MEANFIB', `SIGFIB', `MIN\_H', `MAX\_H', `MIN\_JK', `MAX\_JK',
-`GAIAEDR3\_PARALLAX', `GAIAEDR3\_PMRA', `GAIAEDR3\_PMDEC',
-`GAIAEDR3\_PHOT\_G\_MEAN\_MAG', `GAIAEDR3\_PHOT\_BP\_MEAN\_MAG',
-`GAIAEDR3\_PHOT\_RP\_MEAN\_MAG', `GAIAEDR3\_DR2\_RADIAL\_VELOCITY',
-`GAIAEDR3\_R\_MED\_GEO', `GAIAEDR3\_R\_LO\_GEO', `GAIAEDR3\_R\_HI\_GEO',
-`GAIAEDR3\_R\_MED\_PHOTOGEO', `GAIAEDR3\_R\_LO\_PHOTOGEO',
-`GAIAEDR3\_R\_HI\_PHOTOGEO', `ASPCAP\_CHI2', `FRAC\_BADPIX',
-`FRAC\_LOWSNR', `FRAC\_SIGSKY', `TEFF', `LOGG', `M\_H', `ALPHA\_M',
-`VMICRO', `VMACRO', `VSINI', `C\_FE', `CI\_FE', `N\_FE', `O\_FE',
-`NA\_FE', `MG\_FE', `AL\_FE', `SI\_FE', `P\_FE', `S\_FE', `K\_FE',
-`CA\_FE', `TI\_FE', `TIII\_FE', `V\_FE', `CR\_FE', `MN\_FE', `FE\_H',
-`CO\_FE', `NI\_FE', `CU\_FE', `CE\_FE', `YB\_FE', `RA', `DEC', `GLON',
-`GLAT'{]}
+`J', `H', `K',
+`SNREV', `VHELIO\_AVG', `VSCATTER', `RV\_TEFF', `RV\_LOGG', `RV\_FEH', `RV\_ALPHA', `RV\_CARB', `RV\_CHI2', `RV\_CCFWHM', `RV\_AUTOFWHM', `MEANFIB', `SIGFIB', `MIN\_H', `MAX\_H', `MIN\_JK', `MAX\_JK', `GAIAEDR3\_PARALLAX', `GAIAEDR3\_PMRA', `GAIAEDR3\_PMDEC', `GAIAEDR3\_PHOT\_G\_MEAN\_MAG', `GAIAEDR3\_PHOT\_BP\_MEAN\_MAG', `GAIAEDR3\_PHOT\_RP\_MEAN\_MAG', `GAIAEDR3\_DR2\_RADIAL\_VELOCITY', `GAIAEDR3\_R\_MED\_GEO', `GAIAEDR3\_R\_LO\_GEO', `GAIAEDR3\_R\_HI\_GEO', `GAIAEDR3\_R\_MED\_PHOTOGEO', `GAIAEDR3\_R\_LO\_PHOTOGEO', `GAIAEDR3\_R\_HI\_PHOTOGEO', `ASPCAP\_CHI2', `FRAC\_BADPIX', `FRAC\_LOWSNR', `FRAC\_SIGSKY', `TEFF', `LOGG', `M\_H', `ALPHA\_M', `VMICRO', `VMACRO', `VSINI', `C\_FE', `CI\_FE', `N\_FE', `O\_FE', `NA\_FE', `MG\_FE', `AL\_FE', `SI\_FE', `P\_FE', `S\_FE', `K\_FE', `CA\_FE', `TI\_FE', `TIII\_FE', `V\_FE', `CR\_FE', `MN\_FE', `FE\_H', `CO\_FE', `NI\_FE', `CU\_FE', `CE\_FE', `YB\_FE', `RA', `DEC', `GLON', `GLAT'
 % =========================================
+\subsection{Lasso L1 Regression}
+We do Lasso Regression with \(\alpha=0.1\) and get the following features with Non-Zero Coefficients. We do not expect this to be accurate as L1 regression is not accurate for non linear data.
+\paragraph{}
 
+\pgfplotstabletypeset[
+  col sep=comma,
+  string type,
+  every head row/.style={
+    before row=\toprule,
+    after row=\midrule
+  },
+  every last row/.style={
+    after row=\bottomrule
+  }
+]{Data/Lasso.csv}
 
+% =========================================
+\subsection{Random Forest}
+We do a Random Forest Feature selection with \(n_estimators=100 and random_state=42\) and get the following features. We expect this method to give us a more accurate result of what features are the most important as it works well with multivariant and non-linear data.
+\paragraph{}
+we can see that the most important features are GLAT, VMACRO, M/H, F/H, N/FE and VSCATTER; which tracks with our objective of mapping Halo stars.
+\paragraph{}
 
+\pgfplotstabletypeset[
+  col sep=comma,
+  string replace*={_}{\textunderscore},
+  begin table=\begin{longtable},
+  end table=\end{longtable},
+  every head row/.style={
+    before row={\toprule
+                Feature & Importance \\
+                \midrule},
+    after row={\endhead
+               \bottomrule\endfoot},
+  },
+  columns={Feature,Importance},
+  columns/Feature/.style={string type, column type=l},
+  columns/Importance/.style={column type=r, fixed, precision=6},
+]{Data/RandomForest.csv}
+\section{Conclusion}
+In Conclusion, We can see that the various stellar parameters selected by the Various Techniques reflect their own Advantages and Disadvantages, with the Random Forest Being the most accurate and suitable for our dataset. It selected the most accurate and applicable Features to fit our Hypothesis.
 \end{document}
